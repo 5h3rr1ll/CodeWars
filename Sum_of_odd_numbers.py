@@ -26,5 +26,3 @@ def row_sum_odd_numbers(n):
             number += 1
     """ This step is about slicing. Slicing the list reverse."""
     return(sum(lstOfOdds[:-(n+1):-1]))
-
-row_sum_odd_numbers(3)
