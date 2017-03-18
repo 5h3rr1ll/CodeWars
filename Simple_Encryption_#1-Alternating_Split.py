@@ -8,39 +8,43 @@ def decrypt(encrypted_text, n):
     0 until n to a variable. In the end it returns the varibale with the decrypted
     string. """
 
-        if encrypted_text == None or encrypted_text == []:
-            print(encrypted_text)
-        elif n <= 0:
-            print(encrypted_text)
-        elif encrypted_text.endswith('!'):
-            text = encrypted_text[:-1]
+    if encrypted_text == None:
+        return None
+    elif encrypted_text == []:
+        return(encrypted_text)
+    elif n <= 0:
+        return(encrypted_text)
+    elif encrypted_text.endswith('!'):
+        text = encrypted_text[:-1]
+        text2 = ""
+        for t in range(n):
+            for i in range(len(text)//(2)):
+                text2 += text[len(text)//(2):][i]
+                text2 += text[:len(text)//(2)][i]
+            text = text2
             text2 = ""
-            for t in range(n):
-                for i in range(len(text)//(2)):
-                    text2 += text[len(text)//(2):][i]
-                    text2 += text[:len(text)//(2)][i]
-                text = text2
-                text2 = ""
-            return(text + "!")
-        else:
-            text = encrypted_text
-            a = ""
-            for t in range(n):
-                for i in range(len(text)//(2)):
-                    a += text[len(text)//(2):][i]
-                    a += text[:len(text)//(2)][i]
-            return(a)
+        return(text + "!")
+    else:
+        text = encrypted_text
+        a = ""
+        for t in range(n):
+            for i in range(len(text)//(2)):
+                a += text[len(text)//(2):][i]
+                a += text[:len(text)//(2)][i]
+        return(a)
 
 def encrypt(text, n):
     """ This function encrypts a string by adding first every second object of the
     string to a new variable and the every not second object and this so often you
     tell it to do it with n ."""
 
-    if text == None or text == []:
-        print(text)
+    if text == None:
+        return None
+    elif text == []:
+        return(text)
     elif n <= 0:
-        print(text)
-    else:
+        return(text)
+    elif len(text) < 15:
         text = text[:-1]
         a = ""
         for t in range(n):
@@ -50,7 +54,17 @@ def encrypt(text, n):
                 a += i
             text = a
             a = ""
-        print(text+"!")
+        return(text + "!")
+    else:
+        a = ""
+        for t in range(n):
+            for i in text[1::2]:
+                a += i
+            for i in text[::2]:
+                a += i
+            text = a
+            a = ""
+        return(text)
 
 
 encrypt("This is a test!", 0)
