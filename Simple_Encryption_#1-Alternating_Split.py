@@ -3,6 +3,10 @@
 
 
 def decrypt(encrypted_text, n):
+    """ This function encrypts the string like follows: It devides the string into
+    two parts of the same size. Then it interates thru the two hafls and adds index
+    0 until n to a variable. In the end it returns the varibale with the decrypted
+    string. """
 
         if encrypted_text == None or encrypted_text == []:
             print(encrypted_text)
@@ -17,7 +21,7 @@ def decrypt(encrypted_text, n):
                     text2 += text[:len(text)//(2)][i]
                 text = text2
                 text2 = ""
-            print(text + "!")
+            return(text + "!")
         else:
             text = encrypted_text
             a = ""
@@ -25,10 +29,12 @@ def decrypt(encrypted_text, n):
                 for i in range(len(text)//(2)):
                     a += text[len(text)//(2):][i]
                     a += text[:len(text)//(2)][i]
-            print(a)
+            return(a)
 
 def encrypt(text, n):
-    pass
+    """ This function encrypts a string by adding first every second object of the
+    string to a new variable and the every not second object and this so often you
+    tell it to do it with n ."""
 
     if text == None or text == []:
         print(text)
